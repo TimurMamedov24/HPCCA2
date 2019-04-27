@@ -38,7 +38,7 @@ public class UDPserver extends Thread {
                 packet = new DatagramPacket(this.buf, this.buf.length, address, port);
                 String received
                         = new String(packet.getData(), 0, packet.getLength());
-                System.out.println(received);
+                System.out.println(packet.getAddress() + " :" + packet.getPort() + " :" +received);
                 flash_buffer();
                 if (received.equals("end")) {
                     this.running = false;

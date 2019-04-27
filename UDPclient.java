@@ -42,13 +42,16 @@ public class UDPclient extends Thread {
     public void closeServer(){sendEcho("end");}
 
     public static void main(String[] args){
+        int i = 0;
+        boolean running = true;
         UDPclient client = new UDPclient(4445,args[1]);
-        for (int i = 0; i < 1000; i++) {
+        while(running) {
             client.sendEcho(args[0]);
-            System.out.println(i);
+            i++;
+            if (i == 1000){
+                running = false;
+            }
         }
-        client.closeServer();
-        client.close();
     }
 }
 
