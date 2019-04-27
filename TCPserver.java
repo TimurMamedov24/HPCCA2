@@ -33,9 +33,8 @@ public class TCPserver {
                     System.out.println("end of server");
                 }
                 System.out.println("\r\nMessage from " + clientAddress + ": " + data);
-                this.message = data + this.message;
-                out.println(this.message);
-                this.message = " Friend";
+                String new_message = data + this.message;
+                out.println(new_message.toUpperCase());
             }
         }
     }

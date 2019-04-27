@@ -14,7 +14,7 @@ public class TCPclient {
         this.socket = new Socket(serverAddress, serverPort);
         this.scanner = new Scanner(System.in);
     }
-    private void start() throws IOException {
+    private void read_from_stream() throws IOException {
         String input;
         while (running) {
             input = scanner.next();
@@ -26,10 +26,8 @@ public class TCPclient {
             out.println(input);
             out.flush();
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            String inputline;
-            if ((inputline = in.readLine())!= null){
-                System.out.println(inputline);
-            }
+            String inputline = in.readLine();
+            System.out.println(inputline);
 
         }
     }
@@ -40,7 +38,7 @@ public class TCPclient {
                 Integer.parseInt(args[1]));
 
         System.out.println("\r\nConnected to Server: " + client.socket.getInetAddress());
-        client.start();
+        client.read_from_stream();
     }
 }
 
